@@ -1,0 +1,6 @@
+adium-theme-ubuntu==0.3.4
+Django==1.11.1
+django-bootstrap3==8.2.3
+gunicorn==19.7.1
+pytz==2017.2
+unity-lens-photos==1.0
