@@ -1,3 +1,4 @@
+
 """
 Django settings for DofusWebsiteV2 project.
 
@@ -25,7 +26,7 @@ SECRET_KEY = 'g8v)rct-u0_j(qp5z*ir(8tbs9y0_r=3t+xuw7w6=slw9#_$zj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1","maxallard.ddns.net"]
+ALLOWED_HOSTS = ["127.0.0.1","maxallard.ddns.net","0.0.0.0","192.168.0.120"]
 
 
 # Application definition
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mod_wsgi.server',
 ]
 
 MIDDLEWARE = [
