@@ -1,4 +1,4 @@
-
+#!../env/bin python
 """
 Django settings for DofusWebsiteV2 project.
 
@@ -32,16 +32,17 @@ ALLOWED_HOSTS = ["127.0.0.1","maxallard.ddns.net","0.0.0.0","192.168.0.120"]
 # Application definition
 
 INSTALLED_APPS = [
+    'app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mod_wsgi.server',
+
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
