@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mod_wsgi.server',
+    #'mod_wsgi.server',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -118,7 +118,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOGIN_URL = '/login'
+LOGIN_URL = 'login'
 
 LOGIN_REDIRECT_URL = '/app/'
 

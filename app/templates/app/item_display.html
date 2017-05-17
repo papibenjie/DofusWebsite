@@ -1,0 +1,154 @@
+{% extends 'core/layout/base.html' %}
+
+{% block title %}List{% endblock %}
+
+{% block content %}
+
+HELLO le PRod
+<div class="sm-mid-container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>{{ item.name }}</h4>
+    </div>
+    <div class="panel-body">
+      <u class="row" style="text-decoration:underline;">
+        Niv: {{ item.niv }}
+      </u>
+      <u class="row" style="text-decoration:underline;">
+        {{ item.itype }}
+      </u>
+    </div>
+  </div>
+</div>
+
+<div class="fl-mid-container">
+  <div class="panel panel-default">
+    <div class="panel-heading">Graphs</div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-3">
+          <div id="chart_avg"></div>
+        </div>
+        <div class="col-md-3">
+          <div id="chart_1"></div>
+        </div>
+        <div class="col-md-3">
+          <div id="chart_10"></div>
+        </div>
+        <div class="col-md-3">
+          <div id="chart_100"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+  $(function(){
+    google.charts.load('current', {packages: ['corechart', 'line']});
+
+    google.charts.setOnLoadCallback(drawavg);
+    google.charts.setOnLoadCallback(draw1);
+    google.charts.setOnLoadCallback(draw10);
+    google.charts.setOnLoadCallback(draw100);
+
+function drawavg() {
+  var jsonData = $.ajax({
+    url: "{% url 'loadchart' item_id=item.id item_size=0 %}",
+    dataType: "json",
+    async: false
+  }).responseText;
+  var obj = eval("(" + jsonData + ')');
+  for(i=0;i<obj.length;i++){
+    obj[i]['date'] = new Date(obj[i]['date'])
+  }
+  var data = new google.visualization.DataTable();
+  data.addColumn('date', 'date');
+  data.addColumn('number', 'price');
+  for(i=0;i<obj.length;i++){
+    data.addRow([obj[i]['date'],obj[i]['price']])
+  }
+  var options = { hAxis: { title: 'Date' }, vAxis: { title: 'Price'}};
+  var chart = new google.visualization.LineChart(document.getElementById('chart_avg'));
+  chart.draw(data, options);
+}
+
+function draw1() {
+  var jsonData = $.ajax({
+    url: "{% url 'loadchart' item_id=item.id item_size=1 %}",
+    dataType: "json",
+    async: false
+  }).responseText;
+
+
+  var obj = eval("(" + jsonData + ')');
+
+  for(i=0;i<obj.length;i++){
+    obj[i]['date'] = new Date(obj[i]['date'])
+  }
+  var data = new google.visualization.DataTable();
+  data.addColumn('date', 'date');
+  data.addColumn('number', 'price');
+  for(i=0;i<obj.length;i++){
+    data.addRow([obj[i]['date'],obj[i]['price']])
+  }
+  var options = { hAxis: { title: 'Date' }, vAxis: { title: 'Price'}};
+  var chart = new google.visualization.LineChart(document.getElementById('chart_1'));
+  chart.draw(data, options);
+}
+
+function draw10() {
+  var jsonData = $.ajax({
+    url: "{% url 'loadchart' item_id=item.id item_size=10 %}",
+    dataType: "json",
+    async: false
+  }).responseText;
+
+
+  var obj = eval("(" + jsonData + ')');
+
+  for(i=0;i<obj.length;i++){
+    obj[i]['date'] = new Date(obj[i]['date'])
+  }
+  var data = new google.visualization.DataTable();
+  data.addColumn('date', 'date');
+  data.addColumn('number', 'price');
+  for(i=0;i<obj.length;i++){
+    data.addRow([obj[i]['date'],obj[i]['price']])
+  }
+  var options = { hAxis: { title: 'Date' }, vAxis: { title: 'Price'}};
+  var chart = new google.visualization.LineChart(document.getElementById('chart_10'));
+  chart.draw(data, options);
+}
+
+function draw100() {
+  var jsonData = $.ajax({
+    url: "{% url 'loadchart' item_id=item.id item_size=100 %}",
+    dataType: "json",
+    async: false
+  }).responseText;
+
+
+  var obj = eval("(" + jsonData + ')');
+
+  for(i=0;i<obj.length;i++){
+    obj[i]['date'] = new Date(obj[i]['date'])
+  }
+  var data = new google.visualization.DataTable();
+  data.addColumn('date', 'date');
+  data.addColumn('number', 'price');
+  for(i=0;i<obj.length;i++){
+    data.addRow([obj[i]['date'],obj[i]['price']])
+  }
+  var options = { hAxis: { title: 'Date' }, vAxis: { title: 'Price'}};
+  var chart = new google.visualization.LineChart(document.getElementById('chart_100'));
+  chart.draw(data, options);
+}
+
+
+  });
+</script>
+
+{% endblock %}

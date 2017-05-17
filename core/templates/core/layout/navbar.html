@@ -1,8 +1,8 @@
 
 
 <ul id='my-nav' class="navbar-fixed-top">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Item list</a></li>
+    <li><a href="{% url 'appindex' %}">Home</a></li>
+    <li><a href="{% url 'itemlist' %}">Item list</a></li>
     <li><a href="/ask">Ask</a></li>
     <li><a href="/FAQ">FAQ</a></li>
     {% if user.is_authenticated %}
