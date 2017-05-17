@@ -32,6 +32,8 @@ ALLOWED_HOSTS = ["127.0.0.1","maxallard.ddns.net","0.0.0.0","192.168.0.120"]
 # Application definition
 
 INSTALLED_APPS = [
+    'bootstrap3',
+    'core',
     'app',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -57,7 +59,7 @@ ROOT_URLCONF = 'DofusWebsiteV2.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['core/templates', 'app/templates', os.path.join(BASE_DIR, "templates"),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

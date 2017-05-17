@@ -1,0 +1,52 @@
+
+{% extends 'core/layout/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<div class="md-mid-container">
+  <div class="panel panel-default">
+    <div style="background-color:rgb(126,126,126);color:white;" class="panel-heading">
+      Login
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div style="border-right:1px solid #000;height:100%" class="col-md-6">
+          <form role="form" class="form-horizontal" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {% for field in form %}
+                    <div class="centered input-group">
+                    {% if field.html_name == "password" %}
+                      <input style="background-color:rgb(48,48,48)" class="login-input form-control" id="{{ field.id_for_label }}" maxlength="30" name="{{ field.html_name }}" placeholder={{ field.name }} type="password" />
+                    {% else %}
+                      <input style="background-color:rgb(48,48,48)" class="login-input form-control" id="{{ field.id_for_label }}" maxlength="30" name="{{ field.html_name }}" placeholder={{ field.name }} type="text" />
+                    {% endif %}
+                    {{ field.errors }}
+                    </div>
+                {% endfor %}
+                <input type="submit" class="centered login-input btn btn-login" value="login" />
+                <input type="hidden" name="next" value="{{ next }}" />
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <br>
+          <h5>Don't have an account?</h5>
+          <br>
+          <button class="btn btn-login" type="button" name="button">Create account</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+$('body').css('background' , 'url("../../static/core/img/loginbg.png") no-repeat center center fixed')
+$('body').css('background-size' , 'cover')
+
+
+</script>
+
+{% endblock %}

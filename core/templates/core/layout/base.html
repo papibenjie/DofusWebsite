@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        {% include "core/layout/load.html" %}
+    </head>
+    <body>
+      {% include "core/layout/navbar.html" %}
+      <div id="site-container">
+        {% block content %}{% endblock %}
+      </div>
+    </body>
+</html>
