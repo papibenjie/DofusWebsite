@@ -19,9 +19,9 @@
                 {% for field in form %}
                     <div class="centered input-group">
                     {% if field.html_name == "password" %}
-                      <input style="background-color:rgb(48,48,48)" class="login-input form-control" id="{{ field.id_for_label }}" maxlength="30" name="{{ field.html_name }}" placeholder={{ field.name }} type="password" />
+                      <input class="login-input form-control" id="{{ field.id_for_label }}" maxlength="30" name="{{ field.html_name }}" placeholder={{ field.name }} type="password" />
                     {% else %}
-                      <input style="background-color:rgb(48,48,48)" class="login-input form-control" id="{{ field.id_for_label }}" maxlength="30" name="{{ field.html_name }}" placeholder={{ field.name }} type="text" />
+                      <input class="login-input form-control" id="{{ field.id_for_label }}" maxlength="30" name="{{ field.html_name }}" placeholder={{ field.name }} type="text" />
                     {% endif %}
                     {{ field.errors }}
                     </div>
@@ -35,7 +35,7 @@
           <br>
           <h5>Don't have an account?</h5>
           <br>
-          <button class="btn btn-login" type="button" name="button">Create account</button>
+          <a href="{% url 'createaccountpage' %}"><button class="btn btn-login" type="button" name="button">Create account</button></a>
         </div>
       </div>
     </div>
